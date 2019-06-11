@@ -13,7 +13,7 @@ class GitlabMergeRequests extends Command
      *
      * @var string
      */
-    protected $signature = 'gitlab:merge-requests';
+    protected $signature = 'gitlab:merge-requests {from=7}';
 
     /**
      * The console command description.
@@ -43,14 +43,34 @@ class GitlabMergeRequests extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws \Exception
      */
     public function handle()
     {
+        $days = $this->argument('from');
+
+        if (!is_numeric($days)) {
+            $this->error('Please give a number in days to retreive merqe requests from.');
+            return;
+        }
+
         if (is_null(Config::get('gitlab-merge-requests.gitlab_api_key'))) {
             $this->error('ERROR');
             $this->error('Gitlab api key not set. Please set it in the .env file using GITLAB_API_KEY variable.');
             return;
         }
-        $this->info($this->gitlab->hi());
+
+        $mrs = $this->gitlab->getMergeRequests($days);
+        $count = 0;
+        foreach ($mrs as $mr) {
+            $count++;
+            $this->info($mr->title);
+        }
+
+        $this->line('');
+        $this->info($count . ' total merge requests in the last ' . $days . ' days');
+
+        return;
     }
+
 }
