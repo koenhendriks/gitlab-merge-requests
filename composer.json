@@ -3,6 +3,7 @@
     "description": "Display merge requests from a user from Gitlab.",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Koen Hendriks",
