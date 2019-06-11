@@ -1,0 +1,39 @@
+<?php
+
+namespace KoenHendriks\GitlabMergeRequests;
+
+use Illuminate\Support\ServiceProvider;
+use KoenHendriks\GitlabMergeRequests\Commands\GitlabMergeRequests;
+
+class GitlabMergeRequestsProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // Configuration
+        $this->publishes([
+            __DIR__ . '/../config/gitlab-merge-request.php' => config_path('gitlab-merge-request.php'),
+        ]);
+
+        // Command for this package.
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                GitlabMergeRequests::class
+            ]);
+        }
+    }
+}
