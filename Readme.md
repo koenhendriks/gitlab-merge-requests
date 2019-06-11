@@ -14,4 +14,5 @@ Add the following data to your `.env` file:
 
 ```dotenv
 GITLAB_API_KEY=xx
+GITLAB_URL=https://git.company.com/
 ```
