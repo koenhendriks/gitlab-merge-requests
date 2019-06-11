@@ -14,7 +14,7 @@ class GitlabMergeRequestsProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__ . '/../config/gitlab-merge-request.php', 'gitlab-merge-requests');
     }
 
     /**

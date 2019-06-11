@@ -1,0 +1,33 @@
+{
+    "name": "koenhendriks/gitlab-merge-requests",
+    "description": "Display merge requests from a user from Gitlab.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Koen Hendriks",
+            "email": "info@koenhendriks.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "KoenHendriks\\GitlabMergeRequests\\": "./src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KoenHendriks\\GitlabMergeRequests\\GitlabMergeRequestsProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/support": "~5.8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.8.0",
+        "phpunit/phpunit": "^8.0"
+    }
+}
