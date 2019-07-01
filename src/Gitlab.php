@@ -82,7 +82,7 @@ class Gitlab
                 throw $exception;
             }
         }
-        dump($this->createUrl($date));
+        
         return \GuzzleHttp\json_decode($mergeRequests->getBody());
     }
 
